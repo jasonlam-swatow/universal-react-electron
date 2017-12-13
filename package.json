@@ -1,0 +1,41 @@
+{
+  "name": "universal-react-electron",
+  "description": "A universal React + Electron boilerplate.",
+  "author": "Jason Lam",
+  "version": "0.1.0",
+  "main": "public/main.js",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17",
+    "electron-is-dev": "^0.3.0",
+    "install": "^0.10.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "build --em.main=build/main.js",
+    "preelectron-pack": "npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "electron": "^1.7.5",
+    "electron-builder": "^19.26.3",
+    "wait-on": "^2.0.2"
+  },
+  "build": {
+    "appId": "com.universal",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
