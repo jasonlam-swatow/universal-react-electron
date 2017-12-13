@@ -18,5 +18,7 @@ Please make sure you have Electron installed globally.
 
 * You need to build the React app before building the Electron app. The `preelectron-pack` command is for the former, followed by `electron-pack`. Notice the latter needs to specify the `build` property, because of a minor confict between **create-react-app** and **electron-builder** - they both use the `build` folder for a different purpose. Manually configure **electron-builder**'s correct folders for build step by adding `build` section to  `package.json` can solve this conflict.
 * Considering that we will serve the `build/index.html` instead of using `localhost:3000` under production, we need the **electron-is-dev** to help determine if Electron is running in development, and make some tweaks in the `mainWindow.loadURL` functionality:
-
+    
+    ```
     mainWindow.loadURL(isDev ? ‘http://localhost:3000' : `file://${path.join(__dirname, ‘../build/index.html’)}`);
+    ```
